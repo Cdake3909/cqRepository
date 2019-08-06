@@ -1,0 +1,23 @@
+---
+server:
+  port: 8761
+---
+eureka:
+  instance:
+    hostname: peer1
+    #   在Eureka中显示真实IP:端口号
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+  client:
+    #   表示是否将自己注册到Eureka Server，默认为true
+    #    registerWithEureka: false
+    #   表示是否从Eureka Server获取注册信息，默认为true
+    fetchRegistry: false
+    #    注册到另外两个Server端
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8762/eureka/,http://127.0.0.1:8763/eureka/
+    server:
+      enableSelfPreservation: false
+      evictionIntervalTimerInMs: 4000
