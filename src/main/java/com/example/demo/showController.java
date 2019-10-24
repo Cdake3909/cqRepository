@@ -124,12 +124,12 @@ public class showController {
         for (int i =0;i<headList.size();i++){
             sheet.autoSizeColumn(i);
         }
-        Row row = sheet.createRow(2);
-        Cell cell = row.createCell(1);
-        cell.setCellValue("33");
+        CellRangeAddress region2 =  new CellRangeAddress(0,0,0,1);
+        sheet.addMergedRegion(region2);
         // 分别为起始行，结束行，起始列，结束列
-        CellRangeAddress region =  new CellRangeAddress(1,2,0,0);
+        CellRangeAddress region =  new CellRangeAddress(1,3,0,0);
         sheet.addMergedRegion(region);
+
         try  (OutputStream fileOut = new FileOutputStream(path)) {    //获取文件流
             wb.write(fileOut);   //将workbook写入文件流
         } catch (FileNotFoundException e) {
@@ -147,13 +147,67 @@ public class showController {
         showController s = new showController();
        // s.generateExcel();
         List<String> headList = new ArrayList<>();
-        headList.add("name");
-        headList.add("age");
+        headList.add("岗位类别");
+        headList.add("");
+        headList.add("人数");
+        headList.add("月薪标准合计");
+        headList.add("年度目标浮薪月数(预算)");
+        headList.add("公司系数");
+        headList.add("部门系数");
+        headList.add("可计提年度浮动系数总和");
+        headList.add("季度已预发浮动系数");
+        headList.add("年终奖系数");
+        headList.add("个人系数平均");
+        headList.add("年终奖总额");
+        headList.add("备注");
+
+
         List<List<String>> dataList = new ArrayList<>();
         List<String> rowOne = new ArrayList<>();
-        rowOne.add("susan");
-        rowOne.add("22");
+        rowOne.add("中层员工P3-P5/M3M4");
+        rowOne.add("部门1");
+        rowOne.add("11");
+        rowOne.add("23998");
+        rowOne.add("14");
+        rowOne.add("0.86");
+        rowOne.add("0.92");
+        rowOne.add("0.99");
+        rowOne.add("0.93");
+        rowOne.add("0.88");
+        rowOne.add("0.81");
+        rowOne.add("13234");
+        rowOne.add("预发");
         dataList.add(rowOne);
-        createWorkBook("2007","sheet1",headList,dataList,"C:\\Users\\13543\\Desktop\\11.xlsx");
+        List<String> rowTwo = new ArrayList<>();
+        rowTwo.add("");
+        rowTwo.add("部门2");
+        rowTwo.add("11");
+        rowTwo.add("23998");
+        rowTwo.add("14");
+        rowTwo.add("0.86");
+        rowTwo.add("0.92");
+        rowTwo.add("0.99");
+        rowTwo.add("0.93");
+        rowTwo.add("0.88");
+        rowTwo.add("0.81");
+        rowTwo.add("13234");
+        rowTwo.add("预发");
+        dataList.add(rowTwo);
+        List<String> rowThree = new ArrayList<>();
+        rowThree.add("");
+        rowThree.add("部门3");
+        rowThree.add("11");
+        rowThree.add("23998");
+        rowThree.add("14");
+        rowThree.add("0.86");
+        rowThree.add("0.92");
+        rowThree.add("0.99");
+        rowThree.add("0.93");
+        rowThree.add("0.88");
+        rowThree.add("0.81");
+        rowThree.add("13234");
+        rowThree.add("预发");
+        dataList.add(rowThree);
+        createWorkBook("2007","sheet1",headList,dataList,"D:\\Mydata\\chengqi1\\Desktop\\1211.xlsx");
     }
 }
